@@ -54,7 +54,28 @@ locations = {
     'Red River': (36.7064, -105.4081),
     'Silver City': (32.7701, -108.2803),
     'Ruidoso': (33.3317, -105.6730),
+    # Added NM
+    'Chama': (36.9028, -106.5792),
+    'Angel Fire': (36.3931, -105.2850),
+    'Gallup': (35.5281, -108.7426),
+    'Washington Pass': (36.0900, -108.8600),   # Narbona Pass, Chuska Mtns
+    'La Cueva': (35.8742, -106.6439),           # Jemez Mtns, Sandoval Co.
+    'Gila Hot Springs': (33.1903, -108.2044),
+    'Cloudcroft': (32.9573, -105.7428),
+    'Socorro': (34.0584, -106.8914),
+    'Clayton': (36.4517, -103.1841),
+    'Carlsbad': (32.4207, -104.2288),
+    # Added AZ
+    'Grand Canyon Village': (36.0544, -112.1401),
+    'Kingman': (35.1894, -114.0530),
+    'Whiteriver': (33.8370, -109.9643),
+    'Morenci': (33.0787, -109.3653),
+    'Globe': (33.3942, -110.7865),
 }
+
+# Labels for these cities go on the LEFT of the dot (to avoid the map edge
+# or a nearby label). All others go on the right.
+LABEL_LEFT = {'Clayton', 'Whiteriver'}
 
 # These points use the measured station total from ACIS instead of the grid
 # (falls back to the grid if ACIS doesn't answer).
@@ -240,7 +261,9 @@ def make_map(kind, file_name, valid_end):
     for name, (lat, lon) in locations.items():
         ax.plot(lon, lat, marker='o', color='white', markeredgecolor='black', markersize=6,
                 transform=ccrs.PlateCarree(), zorder=4)
-        ax.text(lon + 0.05, lat + 0.05, f"{name}\n({vals[name]:.1f}\")",
+        left = name in LABEL_LEFT
+        ax.text(lon - 0.05 if left else lon + 0.05, lat + 0.05, f"{name}\n({vals[name]:.1f}\")",
+                ha='right' if left else 'left',
                 transform=ccrs.PlateCarree(), fontsize=8, fontweight='bold', color='black',
                 bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'),
                 zorder=5)
