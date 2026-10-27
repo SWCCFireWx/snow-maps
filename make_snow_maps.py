@@ -68,14 +68,13 @@ locations = {
     # Added AZ
     'Grand Canyon Village': (36.0544, -112.1401),
     'Kingman': (35.1894, -114.0530),
-    'Whiteriver': (33.8370, -109.9643),
     'Morenci': (33.0787, -109.3653),
     'Globe': (33.3942, -110.7865),
 }
 
 # Labels for these cities go on the LEFT of the dot (to avoid the map edge
 # or a nearby label). All others go on the right.
-LABEL_LEFT = {'Clayton', 'Whiteriver'}
+LABEL_LEFT = {'Clayton', 'Chama', 'Farmington', 'Cloudcroft'}
 
 # These points use the measured station total from ACIS instead of the grid
 # (falls back to the grid if ACIS doesn't answer).
