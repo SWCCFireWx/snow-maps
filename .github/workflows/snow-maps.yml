@@ -2,8 +2,12 @@ name: Daily snow maps
 
 on:
   schedule:
-    - cron: '20 13 * * *'
-    - cron: '20 15 * * *'
+    - cron: '47 12 * * *'
+    - cron: '7 13 * * *'
+    - cron: '27 13 * * *'
+    - cron: '47 13 * * *'
+    - cron: '17 14 * * *'
+    - cron: '17 15 * * *'
   workflow_dispatch:
 
 permissions:
